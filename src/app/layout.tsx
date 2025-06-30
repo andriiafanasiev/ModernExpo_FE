@@ -17,3 +17,43 @@ export default function RootLayout({
         </html>
     );
 }
+
+export const metadata = {
+    title: {
+        default:
+            'Реклама на білбордах по всій Україні — Оренда рекламних площин',
+        template: '%s | Реклама на білбордах',
+    },
+    description:
+        'Оренда білбордів по всій Україні. Каталог з фільтрами, фото, геолокацією. Зручне замовлення онлайн.',
+    keywords: ['білборди', 'реклама', 'зовнішня реклама', 'Україна', 'каталог'],
+    authors: [{ name: 'Modern Expo' }],
+    openGraph: {
+        type: 'website',
+        locale: 'uk_UA',
+        url: 'https://modern-expo.com',
+        siteName: 'Modern Expo',
+        images: [
+            {
+                url: '/og-main.jpg',
+                width: 1200,
+                height: 630,
+                alt: 'Реклама на білбордах по всій Україні',
+            },
+        ],
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    verification: {
+        google: 'your-google-verification-code',
+    },
+};

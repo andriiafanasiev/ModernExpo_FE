@@ -1,5 +1,22 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Gotham:wght@400;700&display=swap');
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('/assets/fonts/Gotham/Gotham-Regular.woff2') format('woff2'),
+    url('/assets/fonts/Gotham/Gotham-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('/assets/fonts/Gotham/Gotham-Bold.woff2') format('woff2'),
+    url('/assets/fonts/Gotham/Gotham-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --color-purple: #750DBE;
@@ -11,6 +28,7 @@
 body {
   font-family: var(--font-gotham);
 }
+
 
 .btn-purple-active {
   box-shadow: 0 4px 10.6px 0 rgba(117, 13, 190, 0.5);
