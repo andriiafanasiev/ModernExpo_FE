@@ -35,7 +35,7 @@ export default function Catalog() {
                     </div>
                 </div>
             </div>
-            <CatalogSection />
+            <CatalogSection expanded />
         </>
     );
 }
