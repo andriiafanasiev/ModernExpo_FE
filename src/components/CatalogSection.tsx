@@ -3,11 +3,36 @@ import { useState, useEffect } from 'react';
 import SelectDropdown from '@/components/ui/SelectDropdown';
 import Button from '@/components/ui/Button';
 import Image from 'next/image';
+import CustomCheckbox from './ui/CustomCheckbox';
+import cards from './catalog-cards-data';
+import Link from 'next/link';
 
 const regions = [
     { label: 'Дніпропетровська область', value: 'dnp' },
     { label: 'Київська область', value: 'kyiv' },
     { label: 'Львівська область', value: 'lviv' },
+    { label: 'Одеська область', value: 'odesa' },
+    { label: 'Харківська область', value: 'kharkiv' },
+    { label: 'Запорізька область', value: 'zaporizhzhia' },
+    { label: 'Полтавська область', value: 'poltava' },
+    { label: 'Вінницька область', value: 'vinnytsia' },
+    { label: 'Черкаська область', value: 'cherkasy' },
+    { label: 'Чернівецька область', value: 'chernivtsi' },
+    { label: 'Івано-Франківська область', value: 'ivano' },
+    { label: 'Тернопільська область', value: 'ternopil' },
+    { label: 'Волинська область', value: 'volyn' },
+    { label: 'Закарпатська область', value: 'zakarpattia' },
+    { label: 'Сумська область', value: 'sumy' },
+    { label: 'Чернігівська область', value: 'chernihiv' },
+    { label: 'Миколаївська область', value: 'mykolaiv' },
+    { label: 'Херсонська область', value: 'kherson' },
+    { label: 'Житомирська область', value: 'zhytomyr' },
+    { label: 'Рівненська область', value: 'rivne' },
+    { label: 'Луцька область', value: 'lutsk' },
+    { label: 'Ужгородська область', value: 'uzhhorod' },
+    { label: 'Кропивницька область', value: 'kropyvnytskyi' },
+    { label: 'Луганська область', value: 'luhansk' },
+    { label: 'Донецька область', value: 'donetsk' },
 ];
 const cities: Record<string, { label: string; value: string }[]> = {
     dnp: [
@@ -22,45 +47,80 @@ const cities: Record<string, { label: string; value: string }[]> = {
         { label: 'Львів', value: 'lviv' },
         { label: 'Дрогобич', value: 'drohobych' },
     ],
+    odesa: [
+        { label: 'Одеса', value: 'odesa' },
+        { label: 'Ізмаїл', value: 'izmail' },
+    ],
+    kharkiv: [
+        { label: 'Харків', value: 'kharkiv' },
+        { label: 'Лозова', value: 'lozova' },
+    ],
+    zaporizhzhia: [
+        { label: 'Запоріжжя', value: 'zaporizhzhia' },
+        { label: 'Мелітополь', value: 'melitopol' },
+    ],
+    poltava: [
+        { label: 'Полтава', value: 'poltava' },
+        { label: 'Кременчук', value: 'kremenchuk' },
+    ],
+    vinnytsia: [
+        { label: 'Вінниця', value: 'vinnytsia' },
+        { label: 'Жмеринка', value: 'zhmerynka' },
+    ],
+    cherkasy: [
+        { label: 'Черкаси', value: 'cherkasy' },
+        { label: 'Умань', value: 'uman' },
+    ],
+    chernivtsi: [
+        { label: 'Чернівці', value: 'chernivtsi' },
+        { label: 'Новодністровськ', value: 'novodnistrovsk' },
+    ],
+    ivano: [
+        { label: 'Івано-Франківськ', value: 'ivano' },
+        { label: 'Калуш', value: 'kalush' },
+    ],
+    ternopil: [
+        { label: 'Тернопіль', value: 'ternopil' },
+        { label: 'Чортків', value: 'chortkiv' },
+    ],
+    volyn: [
+        { label: 'Луцьк', value: 'lutsk' },
+        { label: 'Ковель', value: 'kovel' },
+    ],
+    zakarpattia: [
+        { label: 'Ужгород', value: 'uzhhorod' },
+        { label: 'Мукачево', value: 'mukachevo' },
+    ],
+    sumy: [
+        { label: 'Суми', value: 'sumy' },
+        { label: 'Конотоп', value: 'konotop' },
+    ],
+    chernihiv: [
+        { label: 'Чернігів', value: 'chernihiv' },
+        { label: 'Ніжин', value: 'nizhyn' },
+    ],
+    mykolaiv: [
+        { label: 'Миколаїв', value: 'mykolaiv' },
+        { label: 'Вознесенськ', value: 'voznesensk' },
+    ],
+    kherson: [
+        { label: 'Херсон', value: 'kherson' },
+        { label: 'Нова Каховка', value: 'novakahovka' },
+    ],
+    zhytomyr: [
+        { label: 'Житомир', value: 'zhytomyr' },
+        { label: 'Бердичів', value: 'berdychiv' },
+    ],
+    rivne: [
+        { label: 'Рівне', value: 'rivne' },
+        { label: 'Дубно', value: 'dubno' },
+    ],
+    lutsk: [{ label: 'Луцьк', value: 'lutsk' }],
+    uzhhorod: [{ label: 'Ужгород', value: 'uzhhorod' }],
+    kropyvnytskyi: [{ label: 'Кропивницький', value: 'kropyvnytskyi' }],
+    luhansk: [{ label: 'Луганськ', value: 'luhansk' }],
+    donetsk: [{ label: 'Донецьк', value: 'donetsk' }],
 };
-const cards = [
-    {
-        id: 1,
-        city: 'Дніпро',
-        address: 'ТЦ Пасаж, пр. Дмитра Яворницького 50',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 2,
-        city: 'Дніпро',
-        address: 'ТЦ Пасаж, пр. Дмитра Яворницького 50',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 3,
-        city: 'Дніпро',
-        address: 'ТЦ Пасаж, пр. Дмитра Яворницького 50',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 4,
-        city: 'Дніпро',
-        address: 'Заводська Набережна Вул., 4 - Червоний Камінь Вул., В Центр',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 5,
-        city: 'Дніпро',
-        address: 'ТЦ Пасаж, пр. Дмитра Яворницького 50',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 6,
-        city: 'Дніпро',
-        address: 'ТЦ Пасаж, пр. Дмитра Яворницького 50',
-        img: '/assets/images/catalog/1.png',
-    },
-];
 
 interface CatalogSectionProps {
     expanded?: boolean;
@@ -73,9 +133,20 @@ export default function CatalogSection({
     const [city, setCity] = useState('dnipro');
     const [page, setPage] = useState(1);
     const [isMobile, setIsMobile] = useState(false);
+    const [nearby, setNearby] = useState(false);
     const perPage = isMobile ? 3 : 6;
-    const totalPages = Math.ceil(cards.length / perPage);
-    const pagedCards = cards.slice((page - 1) * perPage, page * perPage);
+    const filteredCards = cards.filter(
+        (card) =>
+            card.region === region &&
+            (!city ||
+                card.city ===
+                    cities[region].find((c) => c.value === city)?.label)
+    );
+    const totalPages = Math.ceil(filteredCards.length / perPage);
+    const pagedCards = filteredCards.slice(
+        (page - 1) * perPage,
+        page * perPage
+    );
 
     useEffect(() => {
         setPage(1);
@@ -134,9 +205,11 @@ export default function CatalogSection({
                                 <span className="flex-1 font-medium">
                                     Білборди поруч
                                 </span>
-                                <input
-                                    type="checkbox"
-                                    className="w-6 h-6 border-2 rounded"
+                                <CustomCheckbox
+                                    checked={nearby}
+                                    onChange={(e) =>
+                                        setNearby(e.target.checked)
+                                    }
                                 />
                             </div>
                             <Button
@@ -220,11 +293,18 @@ export default function CatalogSection({
                                     </svg>
                                 </button>
                             </div>
-                            <Button variant="purple">Детальніше</Button>
+                            <Link
+                                href={`/catalog/${card.id}`}
+                                className="mt-2 block w-full"
+                            >
+                                <Button variant="purple" className="w-full">
+                                    Детальніше
+                                </Button>
+                            </Link>
                         </div>
                     ))}
                 </div>
-                {cards.length > perPage && (
+                {totalPages > 1 && (
                     <div className="flex justify-center items-center gap-4 mt-8">
                         <button
                             className="text-[32px] text-[var(--color-purple)] disabled:text-gray-300 px-2"
@@ -266,32 +346,42 @@ export default function CatalogSection({
 
 function CallToActionSection() {
     return (
-        <section
-            className="w-full mt-16 mb-8 px-0"
-            style={{
-                backgroundImage: "url('/assets/images/bg.svg')",
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-            }}
-        >
-            <div className="max-w-6xl mx-auto px-4 md:px-0">
-                <div className="flex flex-col md:flex-row items-center justify-between py-10 md:py-16 gap-8 md:gap-0">
-                    <div className="flex-1 text-center md:text-left">
-                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                            Почни вже зараз!
-                        </h2>
-                        <p className="text-lg md:text-2xl text-white">
-                            Звʼяжіться з нами і ми допоможемо Вам розмістити
-                            рекламу
-                        </p>
-                    </div>
-                    <div className="flex-1 flex justify-center md:justify-end w-full">
-                        <a href="#contact" className="block w-full md:w-auto">
-                            <button className="w-full md:w-[320px] h-[56px] bg-white text-black rounded-2xl text-lg md:text-2xl font-medium transition hover:bg-gray-100">
-                                Звʼязатись
-                            </button>
-                        </a>
+        <section className="w-full mt-16 px-0">
+            <div
+                className="w-full"
+                style={{
+                    backgroundImage: "url('/assets/images/bg.svg')",
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                }}
+            >
+                <div className="max-w-6xl mx-auto px-4 md:px-0">
+                    <div className="rounded-2xl md:rounded-3xl overflow-hidden flex flex-col md:flex-row items-center md:items-stretch justify-between py-10 md:py-16 px-4 md:px-16">
+                        <div className="flex-1 flex flex-col items-center md:items-start justify-center text-center md:text-left gap-4">
+                            <h2 className="text-2xl md:text-4xl font-bold text-white mb-2">
+                                Почни вже зараз!
+                            </h2>
+                            <p className="text-white text-base md:text-lg max-w-xl">
+                                Зв&apos;яжіться з нами і ми допоможемо Вам
+                                розмістити рекламу
+                            </p>
+                        </div>
+                        <div className="flex-1 flex justify-center md:justify-end items-center mt-8 md:mt-0">
+                            <Button
+                                variant="white"
+                                className="text-black text-xl md:text-2xl font-bold px-10 py-4 rounded-2xl md:rounded-2xl min-w-[220px] md:min-w-[260px] shadow-md"
+                                onClick={() => {
+                                    const leadForm =
+                                        document.getElementById('lead-form');
+                                    leadForm?.scrollIntoView({
+                                        behavior: 'smooth',
+                                    });
+                                }}
+                            >
+                                Зв&apos;язатись
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </div>

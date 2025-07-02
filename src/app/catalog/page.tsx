@@ -5,7 +5,7 @@ export default function Catalog() {
     return (
         <>
             <div
-                className="w-full"
+                className="w-full pt-20 md:pt-0"
                 style={{
                     backgroundImage: "url('/assets/images/bg.svg')",
                     backgroundSize: 'cover',

@@ -7,25 +7,25 @@ import ReviewsSection from '@/components/common/ReviewsSection';
 export default function Home() {
     return (
         <>
-        <main
-            className="relative min-h-[calc(100vh-80px)] flex flex-col sm:flex-row items-stretch justify-between bg-[var(--color-bg)] overflow-hidden"
-            style={{
-                backgroundImage: "url('/assets/images/bg.svg')",
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-            }}
-        >
-            <div
-                className="absolute inset-0 opacity-90 z-0"
+            <main
+                className="relative min-h-[calc(100vh-80px)] flex flex-col sm:flex-row items-stretch justify-between bg-[var(--color-bg)] overflow-hidden"
+                style={{
+                    backgroundImage: "url('/assets/images/bg.svg')",
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                }}
+            >
+                <div
+                    className="absolute inset-0 opacity-90 z-0"
                     style={{
                         clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 80%)',
                     }}
-            />
+                />
                 <div className="relative z-10 flex font-semibold font-gotham flex-1 flex-col items-center md:items-start justify-center pt-30 sm:pt-0 pl-6 md:pl-12 gap-8 max-w-[600px]">
                     <h1 className="text-5xl hidden md:block md:text-6xl font-bold text-white leading-tight">
-                    Реклама на <br /> білбордах по <br /> всій Україні
-                </h1>
+                        Реклама на <br /> білбордах по <br /> всій Україні
+                    </h1>
                     <h1 className="text-5xl text-center  md:hidden font-bold text-white leading-tight">
                         Реклама на <br /> білбордах по всій <br /> Україні
                     </h1>
@@ -33,38 +33,38 @@ export default function Home() {
                         variant="white"
                         className="max-w-sm rounded-3xl md:rounded-xl  text-2xl"
                     >
-                    Каталог
-                </Button>
+                        Каталог
+                    </Button>
                     <span className="text-white/80 hidden md:block text-lg pt-4">
-                    Працюємо з 2015 року
-                </span>
-            </div>
+                        Працюємо з 2015 року
+                    </span>
+                </div>
                 <div className="relative mt-5 md:mt-0 z-10 flex flex-1 items-center sm:items-end justify-center pr-3 md:pr-0">
-                <div className="relative w-full max-w-[706px] aspect-[706/555] h-auto flex items-center justify-center">
-                    <Image
-                        src="/assets/images/bilboard.png"
-                        alt="Білборд"
-                        fill
-                        className="object-contain"
-                        priority
-                        sizes="(max-width: 768px) 100vw, 706px"
-                    />
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] flex flex-col items-center">
+                    <div className="relative w-full max-w-[706px] aspect-[706/555] h-auto flex items-center justify-center">
+                        <Image
+                            src="/assets/images/bilboard.png"
+                            alt="Білборд"
+                            fill
+                            className="object-contain"
+                            priority
+                            sizes="(max-width: 768px) 100vw, 706px"
+                        />
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] flex flex-col items-center">
                             <span className="text-2xl md:text-[40px] text-[var(--color-purple)] font-bold text-center drop-shadow-md">
-                            ТУТ МОЖЕ БУТИ
-                            <br />
-                            ВАША РЕКЛАМА
-                        </span>
-                        <Button
-                            variant="purple"
+                                ТУТ МОЖЕ БУТИ
+                                <br />
+                                ВАША РЕКЛАМА
+                            </span>
+                            <Button
+                                variant="purple"
                                 className="max-w-xs rounded-3xl md:rounded-xl w-full mt-12 text-xl "
-                        >
-                            Залишити заявку
-                        </Button>
+                            >
+                                Залишити заявку
+                            </Button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </main>
+            </main>
             <section className="relative z-10 w-full max-w-6xl mx-auto mt-12 px-4 md:px-0 flex flex-col-reverse md:flex-row gap-8 md:gap-12 items-stretch">
                 <div className="flex flex-col items-center md:hidden">
                     <a
@@ -282,39 +282,7 @@ export default function Home() {
                 </div>
             </section>
             <CatalogSection />
-            <section className="w-full mt-16 px-0">
-                <div
-                    className="w-full"
-                    style={{
-                        backgroundImage: "url('/assets/images/bg.svg')",
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        backgroundRepeat: 'no-repeat',
-                    }}
-                >
-                    <div className="max-w-6xl mx-auto px-4 md:px-0">
-                        <div className="rounded-2xl md:rounded-3xl overflow-hidden flex flex-col md:flex-row items-center md:items-stretch justify-between py-10 md:py-16 px-4 md:px-16">
-                            <div className="flex-1 flex flex-col items-center md:items-start justify-center text-center md:text-left gap-4">
-                                <h2 className="text-2xl md:text-4xl font-bold text-white mb-2">
-                                    Почни вже зараз!
-                                </h2>
-                                <p className="text-white text-base md:text-lg max-w-xl">
-                                    Зв&apos;яжіться з нами і ми допоможемо Вам
-                                    розмістити рекламу
-                                </p>
-                            </div>
-                            <div className="flex-1 flex justify-center md:justify-end items-center mt-8 md:mt-0">
-                                <Button
-                                    variant="white"
-                                    className="text-black text-xl md:text-2xl font-bold px-10 py-4 rounded-2xl md:rounded-2xl min-w-[220px] md:min-w-[260px] shadow-md"
-                                >
-                                    Зв&apos;язатись
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+
             <ReviewsSection />
             <section id="contact">
                 <LeadForm />
