@@ -4,6 +4,8 @@ import SelectDropdown from '@/components/ui/SelectDropdown';
 import Button from '@/components/ui/Button';
 import Image from 'next/image';
 import CustomCheckbox from './ui/CustomCheckbox';
+import cards from './catalog-cards-data';
+import Link from 'next/link';
 
 const regions = [
     { label: 'Дніпропетровська область', value: 'dnp' },
@@ -119,394 +121,6 @@ const cities: Record<string, { label: string; value: string }[]> = {
     luhansk: [{ label: 'Луганськ', value: 'luhansk' }],
     donetsk: [{ label: 'Донецьк', value: 'donetsk' }],
 };
-const cards = [
-    // Дніпропетровська область (12 штук)
-    {
-        id: 1,
-        city: 'Дніпро',
-        region: 'dnp',
-        address: 'ТЦ Пасаж, пр. Дмитра Яворницького 50',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 2,
-        city: 'Дніпро',
-        region: 'dnp',
-        address: 'просп. Гагаріна, 12',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 3,
-        city: 'Дніпро',
-        region: 'dnp',
-        address: 'вул. Січеславська Набережна, 7',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 4,
-        city: 'Кривий Ріг',
-        region: 'dnp',
-        address: 'Площа Визволення, 1',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 5,
-        city: 'Кривий Ріг',
-        region: 'dnp',
-        address: 'просп. Миру, 33',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 6,
-        city: 'Дніпро',
-        region: 'dnp',
-        address: 'вул. Робоча, 146',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 7,
-        city: 'Дніпро',
-        region: 'dnp',
-        address: 'вул. Калинова, 87',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 8,
-        city: 'Дніпро',
-        region: 'dnp',
-        address: 'просп. Слобожанський, 42',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 9,
-        city: 'Дніпро',
-        region: 'dnp',
-        address: 'вул. Панікахи, 2',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 10,
-        city: 'Дніпро',
-        region: 'dnp',
-        address: 'вул. Космічна, 21',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 11,
-        city: 'Дніпро',
-        region: 'dnp',
-        address: 'просп. Олександра Поля, 59',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 12,
-        city: 'Дніпро',
-        region: 'dnp',
-        address: 'вул. Титова, 36',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 13,
-        city: 'Київ',
-        region: 'kyiv',
-        address: 'Хрещатик, 22',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 14,
-        city: 'Біла Церква',
-        region: 'kyiv',
-        address: 'вул. Ярослава Мудрого, 15',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 15,
-        city: 'Львів',
-        region: 'lviv',
-        address: 'просп. Свободи, 16',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 16,
-        city: 'Дрогобич',
-        region: 'lviv',
-        address: 'вул. Шевченка, 2',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 17,
-        city: 'Одеса',
-        region: 'odesa',
-        address: 'вул. Дерибасівська, 10',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 18,
-        city: 'Ізмаїл',
-        region: 'odesa',
-        address: 'просп. Суворова, 5',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 19,
-        city: 'Харків',
-        region: 'kharkiv',
-        address: 'просп. Науки, 12',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 20,
-        city: 'Лозова',
-        region: 'kharkiv',
-        address: 'вул. Соборна, 3',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 21,
-        city: 'Запоріжжя',
-        region: 'zaporizhzhia',
-        address: 'просп. Соборний, 45',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 22,
-        city: 'Мелітополь',
-        region: 'zaporizhzhia',
-        address: 'вул. Гетьманська, 8',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 23,
-        city: 'Полтава',
-        region: 'poltava',
-        address: 'вул. Європейська, 21',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 24,
-        city: 'Кременчук',
-        region: 'poltava',
-        address: 'просп. Свободи, 9',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 25,
-        city: 'Вінниця',
-        region: 'vinnytsia',
-        address: 'вул. Соборна, 25',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 26,
-        city: 'Жмеринка',
-        region: 'vinnytsia',
-        address: 'вул. Київська, 4',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 27,
-        city: 'Черкаси',
-        region: 'cherkasy',
-        address: 'бульв. Шевченка, 100',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 28,
-        city: 'Умань',
-        region: 'cherkasy',
-        address: 'вул. Європейська, 1',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 29,
-        city: 'Чернівці',
-        region: 'chernivtsi',
-        address: 'вул. Головна, 50',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 30,
-        city: 'Новодністровськ',
-        region: 'chernivtsi',
-        address: 'вул. Енергетиків, 2',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 31,
-        city: 'Івано-Франківськ',
-        region: 'ivano',
-        address: 'вул. Незалежності, 40',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 32,
-        city: 'Калуш',
-        region: 'ivano',
-        address: 'просп. Лесі Українки, 7',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 33,
-        city: 'Тернопіль',
-        region: 'ternopil',
-        address: 'вул. Руська, 12',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 34,
-        city: 'Чортків',
-        region: 'ternopil',
-        address: 'вул. Шевченка, 8',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 35,
-        city: 'Луцьк',
-        region: 'volyn',
-        address: 'просп. Волі, 15',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 36,
-        city: 'Ковель',
-        region: 'volyn',
-        address: 'вул. Незалежності, 3',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 37,
-        city: 'Ужгород',
-        region: 'zakarpattia',
-        address: 'пл. Петефі, 2',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 38,
-        city: 'Мукачево',
-        region: 'zakarpattia',
-        address: 'вул. Миру, 11',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 39,
-        city: 'Суми',
-        region: 'sumy',
-        address: 'вул. Харківська, 10',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 40,
-        city: 'Конотоп',
-        region: 'sumy',
-        address: 'просп. Миру, 5',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 41,
-        city: 'Чернігів',
-        region: 'chernihiv',
-        address: 'просп. Перемоги, 20',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 42,
-        city: 'Ніжин',
-        region: 'chernihiv',
-        address: 'вул. Шевченка, 6',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 43,
-        city: 'Миколаїв',
-        region: 'mykolaiv',
-        address: 'просп. Центральний, 50',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 44,
-        city: 'Вознесенськ',
-        region: 'mykolaiv',
-        address: 'вул. Київська, 9',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 45,
-        city: 'Херсон',
-        region: 'kherson',
-        address: 'просп. Ушакова, 30',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 46,
-        city: 'Нова Каховка',
-        region: 'kherson',
-        address: 'вул. Франка, 2',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 47,
-        city: 'Житомир',
-        region: 'zhytomyr',
-        address: 'вул. Київська, 77',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 48,
-        city: 'Бердичів',
-        region: 'zhytomyr',
-        address: 'вул. Європейська, 13',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 49,
-        city: 'Рівне',
-        region: 'rivne',
-        address: 'вул. Соборна, 112',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 50,
-        city: 'Дубно',
-        region: 'rivne',
-        address: 'вул. Замкова, 1',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 51,
-        city: 'Луцьк',
-        region: 'lutsk',
-        address: 'просп. Молоді, 2',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 52,
-        city: 'Ужгород',
-        region: 'uzhhorod',
-        address: 'вул. Корятовича, 5',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 53,
-        city: 'Кропивницький',
-        region: 'kropyvnytskyi',
-        address: 'вул. Велика Перспективна, 10',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 54,
-        city: 'Луганськ',
-        region: 'luhansk',
-        address: 'вул. Радянська, 1',
-        img: '/assets/images/catalog/1.png',
-    },
-    {
-        id: 55,
-        city: 'Донецьк',
-        region: 'donetsk',
-        address: 'просп. Ілліча, 15',
-        img: '/assets/images/catalog/1.png',
-    },
-];
 
 interface CatalogSectionProps {
     expanded?: boolean;
@@ -679,7 +293,17 @@ export default function CatalogSection({
                                     </svg>
                                 </button>
                             </div>
-                            <Button variant="purple">Детальніше</Button>
+                            <Link
+                                href={`/catalog/${card.id}`}
+                                passHref
+                                legacyBehavior
+                            >
+                                <a className="mt-2 block w-full">
+                                    <Button variant="purple" className="w-full">
+                                        Детальніше
+                                    </Button>
+                                </a>
+                            </Link>
                         </div>
                     ))}
                 </div>
@@ -751,14 +375,13 @@ function CallToActionSection() {
                                 variant="white"
                                 className="text-black text-xl md:text-2xl font-bold px-10 py-4 rounded-2xl md:rounded-2xl min-w-[220px] md:min-w-[260px] shadow-md"
                                 onClick={() => {
-                                    const leadForm = document.getElementById(
-                                        'lead-form'
-                                    );
+                                    const leadForm =
+                                        document.getElementById('lead-form');
                                     leadForm?.scrollIntoView({
                                         behavior: 'smooth',
                                     });
                                 }}
-                                >
+                            >
                                 Зв&apos;язатись
                             </Button>
                         </div>
