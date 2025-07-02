@@ -282,39 +282,7 @@ export default function Home() {
                 </div>
             </section>
             <CatalogSection />
-            <section className="w-full mt-16 px-0">
-                <div
-                    className="w-full"
-                    style={{
-                        backgroundImage: "url('/assets/images/bg.svg')",
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        backgroundRepeat: 'no-repeat',
-                    }}
-                >
-                    <div className="max-w-6xl mx-auto px-4 md:px-0">
-                        <div className="rounded-2xl md:rounded-3xl overflow-hidden flex flex-col md:flex-row items-center md:items-stretch justify-between py-10 md:py-16 px-4 md:px-16">
-                            <div className="flex-1 flex flex-col items-center md:items-start justify-center text-center md:text-left gap-4">
-                                <h2 className="text-2xl md:text-4xl font-bold text-white mb-2">
-                                    Почни вже зараз!
-                                </h2>
-                                <p className="text-white text-base md:text-lg max-w-xl">
-                                    Зв&apos;яжіться з нами і ми допоможемо Вам
-                                    розмістити рекламу
-                                </p>
-                            </div>
-                            <div className="flex-1 flex justify-center md:justify-end items-center mt-8 md:mt-0">
-                                <Button
-                                    variant="white"
-                                    className="text-black text-xl md:text-2xl font-bold px-10 py-4 rounded-2xl md:rounded-2xl min-w-[220px] md:min-w-[260px] shadow-md"
-                                >
-                                    Зв&apos;язатись
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+
             <ReviewsSection />
             <section id="contact">
                 <LeadForm />
