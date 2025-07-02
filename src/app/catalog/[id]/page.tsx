@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import cards from '@/components/catalog-cards-data'; // створю окремий файл для cards, щоб шарити між сторінками
-import LeadForm from '@/components/forms/LeadForm';
+import Link from 'next/link';
+import Button from '@/components/ui/Button';
 
 const regionLabels: Record<string, string> = {
     dnp: 'Дніпропетровська',
@@ -34,9 +35,10 @@ const regionLabels: Record<string, string> = {
 export default async function BillboardPage({
     params,
 }: {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 }) {
-    const billboard = cards.find((card) => card.id === Number(params.id));
+    const { id } = await params;
+    const billboard = cards.find((card) => card.id === Number(id));
     if (!billboard) return notFound();
     const others = cards
         .filter(
@@ -57,12 +59,12 @@ export default async function BillboardPage({
             </section>
 
             <main className="w-full max-w-6xl mx-auto mt-8 px-4 md:px-0">
-                <a
+                <Link
                     href="/catalog"
                     className="text-gray-400 text-base mb-4 hover:underline"
                 >
                     &larr; Назад
-                </a>
+                </Link>
                 <div className="bg-white rounded-2xl shadow-lg p-4 md:p-8 flex flex-col md:flex-row gap-6 items-center md:items-stretch">
                     <div className="w-full md:w-1/2 flex-shrink-0">
                         <Image
@@ -151,25 +153,36 @@ export default async function BillboardPage({
                     />
                 </div>
                 <div className="flex-1">
-                    <LeadForm
-                        className="h-full mt-0 md:mt-0"
-                        title="Залиште заявку щоб ми з Вами звʼязались"
-                        buttonText="Надіслати"
-                        mapEmbed={
-                            <iframe
-                                src={`https://www.google.com/maps?q=${encodeURIComponent(
-                                    billboard.address + ', ' + billboard.city
-                                )}&output=embed`}
-                                width="100%"
-                                height="100%"
-                                className="w-full h-full border-none"
-                                allowFullScreen
-                                loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                                title="Мапа"
-                            />
-                        }
-                    />
+                    <section className="w-full max-w-5xl mx-auto mt-16 px-2 md:px-0">
+                        <div className="bg-white rounded-2xl shadow-lg flex flex-col md:flex-row items-center md:items-stretch overflow-hidden p-4 md:p-8 gap-8 md:gap-0">
+                            <form className="flex-1 flex w-full flex-col justify-center gap-4 md:pr-8 order-2 md:order-1">
+                                <h2 className="text-2xl md:text-3xl font-bold text-center  mb-2">
+                                    Залиште заявку щоб ми з Вами зв’язались
+                                </h2>
+                                <input
+                                    type="text"
+                                    placeholder="Ім'я"
+                                    className="rounded-xl border w-full  border-gray-400 px-4 py-3 text-base md:text-lg outline-none focus:ring-2 focus:ring-[var(--color-purple)] transition"
+                                />
+                                <input
+                                    type="tel"
+                                    placeholder="Номер телефону"
+                                    className="rounded-xl border w-full border-gray-400 px-4 py-3 text-base md:text-lg outline-none focus:ring-2 focus:ring-[var(--color-purple)] transition"
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="Назва компанії або діяльність"
+                                    className="rounded-xl border w-full border-gray-400 px-4 py-3 text-base md:text-lg outline-none focus:ring-2 focus:ring-[var(--color-purple)] transition"
+                                />
+                                <Button
+                                    variant="purple"
+                                    className="mt-2 text-white text-lg md:text-xl font-bold py-3 rounded-xl"
+                                >
+                                    Відправити
+                                </Button>
+                            </form>
+                        </div>
+                    </section>
                 </div>
             </section>
 

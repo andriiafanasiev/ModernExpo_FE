@@ -295,14 +295,11 @@ export default function CatalogSection({
                             </div>
                             <Link
                                 href={`/catalog/${card.id}`}
-                                passHref
-                                legacyBehavior
+                                className="mt-2 block w-full"
                             >
-                                <a className="mt-2 block w-full">
-                                    <Button variant="purple" className="w-full">
-                                        Детальніше
-                                    </Button>
-                                </a>
+                                <Button variant="purple" className="w-full">
+                                    Детальніше
+                                </Button>
                             </Link>
                         </div>
                     ))}
