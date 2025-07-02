@@ -750,7 +750,15 @@ function CallToActionSection() {
                             <Button
                                 variant="white"
                                 className="text-black text-xl md:text-2xl font-bold px-10 py-4 rounded-2xl md:rounded-2xl min-w-[220px] md:min-w-[260px] shadow-md"
-                            >
+                                onClick={() => {
+                                    const leadForm = document.getElementById(
+                                        'lead-form'
+                                    );
+                                    leadForm?.scrollIntoView({
+                                        behavior: 'smooth',
+                                    });
+                                }}
+                                >
                                 Зв&apos;язатись
                             </Button>
                         </div>

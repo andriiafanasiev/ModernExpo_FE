@@ -29,6 +29,13 @@ export default function Catalog() {
                         <Button
                             variant="white"
                             className="text-black text-lg md:text-2xl font-bold px-8 md:px-16 py-4 rounded-2xl min-w-[220px] md:min-w-[340px] max-w-[493px] w-full shadow-md"
+                            onClick={() => {
+                                const leadForm =
+                                    document.getElementById('lead-form');
+                                leadForm?.scrollIntoView({
+                                    behavior: 'smooth',
+                                });
+                            }}
                         >
                             Зв&apos;язатись з нами
                         </Button>

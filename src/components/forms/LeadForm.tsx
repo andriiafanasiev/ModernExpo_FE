@@ -3,7 +3,10 @@ import Image from 'next/image';
 
 export default function LeadForm() {
     return (
-        <section className="w-full max-w-5xl mx-auto mt-16 px-2 md:px-0">
+        <section
+            id="lead-form"
+            className="w-full max-w-5xl mx-auto mt-16 px-2 md:px-0"
+        >
             <div className="bg-white rounded-2xl shadow-lg flex flex-col md:flex-row items-center md:items-stretch overflow-hidden p-4 md:p-8 gap-8 md:gap-0">
                 <form className="flex-1 flex w-full flex-col justify-center gap-4 md:pr-8 order-2 md:order-1">
                     <h2 className="text-2xl md:text-3xl font-bold text-center md:text-left mb-2">
